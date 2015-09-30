@@ -55,7 +55,6 @@ namespace WindowsFormsApplication2
 
         public Polygon(int[][] arrCoord, Color color)
         {
-            System.Console.Write(arrCoord[0][0]);
             init(arrCoord, color);
         }
 

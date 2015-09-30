@@ -27,15 +27,14 @@ namespace WindowsFormsApplication2
 
         private void init() { 
             this.loaded = true;
-            System.Console.Write("Init\n");
             GL.ClearColor(Color.Black);
             GL.Enable(EnableCap.DepthTest);
 
-            Matrix4 p = Matrix4.CreatePerspectiveFieldOfView((float)(80 * Math.PI / 180), 1, 20, 500);
+            Matrix4 p = Matrix4.CreatePerspectiveFieldOfView((float)(10 * Math.PI / 180), 1, 10, 500);
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadMatrix(ref p);
 
-            Matrix4 modelview = Matrix4.LookAt(70, 70, 70, 0, 0, 0, 0, 1, 0);
+            Matrix4 modelview = Matrix4.LookAt(20, 10, 20, 200, 0, 200, 0, 1, 0);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadMatrix(ref modelview);
         }
