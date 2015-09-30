@@ -65,7 +65,6 @@ namespace WindowsFormsApplication2
 
         private void glControl1_KeyDown(object sender, KeyEventArgs e)
         {
-            glControl1.SwapBuffers();
             if (e.KeyCode.ToString() == "A")
             {
                 hOpenGL.MoveLeft();
@@ -74,6 +73,7 @@ namespace WindowsFormsApplication2
             { 
                 hOpenGL.MoveRight();
             }
+            glControl1.Invalidate();
         }
     }
 }
