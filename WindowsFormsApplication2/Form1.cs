@@ -31,12 +31,17 @@ namespace WindowsFormsApplication2
             System.Console.Write("Paint\n");
             int[][] arrCoord = new int[4][];
             Color color = Color.Gray;
-            int width = 200;
+            int width = 50;
+
+            Bitmap bitmap = new Bitmap(@"D:\Проекты\WindowsFormsApplication2\WindowsFormsApplication2\img\pol.jpg");
+            Texture Txtr = new Texture(bitmap);
+            
+            GL.BindTexture(TextureTarget.Texture3D, Txtr.GetTexture);
 
             arrCoord[0] = new int[3];
             arrCoord[0][0] = 0;
             arrCoord[0][1] = 0;
-            arrCoord[0][2] = 0;
+            arrCoord[0][2] = 0;           
 
             arrCoord[1] = new int[3];
             arrCoord[1][0] = 0;

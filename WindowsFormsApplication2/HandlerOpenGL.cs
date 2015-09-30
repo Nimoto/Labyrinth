@@ -30,11 +30,11 @@ namespace WindowsFormsApplication2
             GL.ClearColor(Color.Black);
             GL.Enable(EnableCap.DepthTest);
 
-            Matrix4 p = Matrix4.CreatePerspectiveFieldOfView((float)(10 * Math.PI / 180), 1, 10, 500);
+            Matrix4 p = Matrix4.CreatePerspectiveFieldOfView((float)(80 * Math.PI / 180), 1, 1, 500);
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadMatrix(ref p);
 
-            Matrix4 modelview = Matrix4.LookAt(20, 10, 20, 200, 0, 200, 0, 1, 0);
+            Matrix4 modelview = Matrix4.LookAt(-1, 30, -1, 20, 0, 20, 0, 1, 0);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadMatrix(ref modelview);
         }
