@@ -27,10 +27,6 @@ namespace WindowsFormsApplication2
 
         protected void OnLoad()
         {
-            GL.Enable(EnableCap.Texture3DExt);
-
-            GL.Hint(HintTarget.PerspectiveCorrectionHint, HintMode.Nicest);
-
             GL.GenTextures(1, out texture);
             GL.BindTexture(TextureTarget.Texture3D, texture);
             GL.TexParameter(TextureTarget.Texture3D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);

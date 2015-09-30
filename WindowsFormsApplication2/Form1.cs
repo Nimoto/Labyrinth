@@ -36,7 +36,6 @@ namespace WindowsFormsApplication2
             Bitmap bitmap = new Bitmap(@"D:\Проекты\WindowsFormsApplication2\WindowsFormsApplication2\img\pol.jpg");
             Texture Txtr = new Texture(bitmap);
             
-            GL.BindTexture(TextureTarget.Texture3D, Txtr.GetTexture);
 
             arrCoord[0] = new int[3];
             arrCoord[0][0] = 0;
@@ -59,9 +58,22 @@ namespace WindowsFormsApplication2
             arrCoord[3][2] = 0;
 
             Polygon polygon = new Polygon(arrCoord, color);
-            polygon.Draw();
+            polygon.Draw(Txtr);
 
             glControl1.SwapBuffers();
+        }
+
+        private void glControl1_KeyDown(object sender, KeyEventArgs e)
+        {
+            glControl1.SwapBuffers();
+            if (e.KeyCode.ToString() == "A")
+            {
+                hOpenGL.MoveLeft();
+            }
+            else if (e.KeyCode.ToString() == "D")
+            { 
+                hOpenGL.MoveRight();
+            }
         }
     }
 }
