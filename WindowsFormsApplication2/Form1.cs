@@ -31,6 +31,9 @@ namespace WindowsFormsApplication2
 
             System.Console.Write("Paint\n");
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            GL.Enable(EnableCap.DepthTest);
+            GL.DepthRange(0.1f, 1.0f);
+            GL.DepthMask(true);
             Bitmap bitmap = new Bitmap(@"D:\Проекты\WindowsFormsApplication2\WindowsFormsApplication2\img\pol.jpg");
             if (Txtr == null) Txtr = new Texture(bitmap);
             Mapper map = new Mapper();
