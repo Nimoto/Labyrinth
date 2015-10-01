@@ -52,9 +52,9 @@ namespace WindowsFormsApplication2
         {
             this.angle = 0.79f;
             this.R = 20;
-            this.eyeX = -1;
+            this.eyeX = 250;
             this.eyeY = 20;
-            this.eyeZ = -1;
+            this.eyeZ = 250;
             this.targetX = this.countTargetX();
             this.targetY = 20;
             this.targetZ = this.countTargetZ();
@@ -90,6 +90,7 @@ namespace WindowsFormsApplication2
             this.eyeX += mode * (float)Math.Sin(this.angle);
             this.eyeZ += mode * (float)Math.Cos(this.angle);
             this.targetX += (this.eyeX - oldX);
+            //this.targetY = 20;
             this.targetZ += (this.eyeZ - oldZ);
             this.ChangeCam();
         }
@@ -98,6 +99,7 @@ namespace WindowsFormsApplication2
         {
             this.angle += mode*0.05f;
             this.targetX = this.countTargetX();
+            //this.targetY = 20;
             this.targetZ = this.countTargetZ();
             this.ChangeCam();
         }
@@ -117,7 +119,7 @@ namespace WindowsFormsApplication2
                 this.oldMouseX = X;
                 modeX = (int)Math.Round(deltaX / Math.Abs(deltaX));
             }
-            MoveSideways(modeX);
+            this.MoveSideways(modeX);
         }
     }
 }

@@ -52,7 +52,7 @@ namespace WindowsFormsApplication2
 
     class Polygon : Shape
     {
-
+        public Polygon() { }
         public Polygon(int[][] arrCoord, Color color)
         {
             init(arrCoord, color);
@@ -82,6 +82,7 @@ namespace WindowsFormsApplication2
             foreach (int[] coord in this.arrCoord) {
                 if (Txtr != null) GL.TexCoord3(textCoord[count][0], textCoord[count][1], textCoord[count][2]);
                 GL.Vertex3(coord[0], coord[1], coord[2]);
+                //System.Console.Write("==> " + coord[0] + " " + coord[1] + " " + coord[2] + "\n");
                 count++;
             }
             GL.End();

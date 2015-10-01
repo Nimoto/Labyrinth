@@ -31,58 +31,11 @@ namespace WindowsFormsApplication2
 
             System.Console.Write("Paint\n");
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            int[][] arrCoord = new int[4][];
-            Color color = Color.Gray;
-            int width = 50;
-
             Bitmap bitmap = new Bitmap(@"D:\Проекты\WindowsFormsApplication2\WindowsFormsApplication2\img\pol.jpg");
             if (Txtr == null) Txtr = new Texture(bitmap);
-
-
-            arrCoord[0] = new int[3];
-            arrCoord[0][0] = 0;
-            arrCoord[0][1] = 0;
-            arrCoord[0][2] = 0;
-
-            arrCoord[1] = new int[3];
-            arrCoord[1][0] = 0;
-            arrCoord[1][1] = 0;
-            arrCoord[1][2] = width;
-
-            arrCoord[2] = new int[3];
-            arrCoord[2][0] = width;
-            arrCoord[2][1] = 0;
-            arrCoord[2][2] = width;
-
-            arrCoord[3] = new int[3];
-            arrCoord[3][0] = width;
-            arrCoord[3][1] = 0;
-            arrCoord[3][2] = 0;
-
-            Polygon polygon = new Polygon(arrCoord, color);
-            polygon.Draw(Txtr);
-
-            double subwidth = Math.Round(width / 2.0);
-
-            arrCoord[0][0] = (int)subwidth;
-            arrCoord[0][1] = (int)subwidth;
-            arrCoord[0][2] = (int)subwidth;
-
-            arrCoord[1][0] = (int)subwidth;
-            arrCoord[1][1] = 0;
-            arrCoord[1][2] = (int)subwidth;
-
-            arrCoord[2][0] = (int)subwidth;
-            arrCoord[2][1] = 0;
-            arrCoord[2][2] = width;
-
-            arrCoord[3][0] = (int)subwidth;
-            arrCoord[3][1] = (int)subwidth;
-            arrCoord[3][2] = width;
-
-            Polygon polygon2 = new Polygon(arrCoord, color);
-            polygon2.Draw(Txtr);
-
+            Mapper map = new Mapper();
+            Labyrinth lab = new Labyrinth(map.PolygonCreated());
+            lab.DrawLabyrinth(Txtr);
             glControl1.SwapBuffers();
         }
 
@@ -114,8 +67,8 @@ namespace WindowsFormsApplication2
 
         private void glControl1_MouseMove(object sender, MouseEventArgs e)
         {
-            hOpenGL.LookAround(e.X, e.Y);
-            this.MyPaint();
+            //hOpenGL.LookAround(e.X, e.Y);
+            //this.MyPaint();
         }
     }
 }
