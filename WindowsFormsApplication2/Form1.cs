@@ -15,6 +15,7 @@ namespace WindowsFormsApplication2
     public partial class Form1 : Form
     {
         HandlerOpenGL hOpenGL;
+        Texture Txtr;
 
         public Form1()
         {
@@ -34,7 +35,7 @@ namespace WindowsFormsApplication2
             int width = 50;
 
             Bitmap bitmap = new Bitmap(@"D:\Проекты\WindowsFormsApplication2\WindowsFormsApplication2\img\pol.jpg");
-            Texture Txtr = new Texture(bitmap);
+            if(Txtr == null) Txtr = new Texture(bitmap);
             
 
             arrCoord[0] = new int[3];
@@ -65,7 +66,6 @@ namespace WindowsFormsApplication2
 
         private void glControl1_KeyDown(object sender, KeyEventArgs e)
         {
-            //FrameEventArgs frameEvent = new FrameEventArgs();
             if (e.KeyCode.ToString() == "W")
             {
                 hOpenGL.MoveForward(1);
