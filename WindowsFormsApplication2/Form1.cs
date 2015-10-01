@@ -65,13 +65,22 @@ namespace WindowsFormsApplication2
 
         private void glControl1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode.ToString() == "A")
+            //FrameEventArgs frameEvent = new FrameEventArgs();
+            if (e.KeyCode.ToString() == "W")
             {
-                hOpenGL.MoveLeft();
+                hOpenGL.MoveForward(1);
+            }
+            else if (e.KeyCode.ToString() == "S")
+            {
+                hOpenGL.MoveForward(-1);
+            }
+            else if (e.KeyCode.ToString() == "A")
+            {
+                hOpenGL.MoveSideways(1);
             }
             else if (e.KeyCode.ToString() == "D")
-            { 
-                hOpenGL.MoveRight();
+            {
+                hOpenGL.MoveSideways(-1);
             }
             glControl1.Invalidate();
         }
