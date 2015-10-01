@@ -62,6 +62,30 @@ namespace WindowsFormsApplication2
             this.oldY = Mouse.GetCursorState().Y;
             this.oldMouseX = Mouse.GetCursorState().X;
             this.oldMouseY = Mouse.GetCursorState().Y;
+            
+            GL.Enable(EnableCap.DepthTest);
+            GL.DepthRange(0.1f, 1.0f);
+            GL.DepthMask(true);
+
+            Vector4 LightAmbient = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
+            Vector4 LightDiffuse = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+            Vector4 LightPosition = new Vector4(0.0f, 0.0f, 5.0f, 1.0f);
+
+
+            GL.Enable(EnableCap.Fog);
+            float[] color = { 0f, 0f, 0f, 1.0f };
+            GL.Fog(FogParameter.FogMode, 1);
+            GL.Fog(FogParameter.FogColor, color);
+            GL.Fog(FogParameter.FogDensity, 0.03f);
+            GL.Hint(HintTarget.FogHint, HintMode.Nicest);
+            GL.Fog(FogParameter.FogStart, 1.0f);
+            GL.Fog(FogParameter.FogEnd, 10.0f);
+
+            // GL.Light(LightName.Light0, LightParameter.Ambient, LightAmbient);
+            //GL.Light(LightName.Light1, LightParameter.Diffuse, LightDiffuse);
+            //GL.Light(LightName.Light1, LightParameter.Position, LightPosition);
+            //GL.Enable(EnableCap.Lighting);
+            //GL.Enable(EnableCap.Light1);
 
             this.loaded = true;
             GL.ClearColor(Color.Black);
@@ -81,6 +105,7 @@ namespace WindowsFormsApplication2
                                                  0, 1, 0);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadMatrix(ref modelview);
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
         }
 
         public void MoveForward(int mode)

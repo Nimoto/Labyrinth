@@ -16,6 +16,8 @@ namespace WindowsFormsApplication2
     {
         HandlerOpenGL hOpenGL;
         Texture Txtr;
+        Texture TxtrTop;
+        Texture TxtrFloor;
 
         public Form1()
         {
@@ -28,17 +30,17 @@ namespace WindowsFormsApplication2
         }
 
         private void MyPaint() {
-
-            System.Console.Write("Paint\n");
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            GL.Enable(EnableCap.DepthTest);
-            GL.DepthRange(0.1f, 1.0f);
-            GL.DepthMask(true);
-            Bitmap bitmap = new Bitmap(@"D:\Проекты\WindowsFormsApplication2\WindowsFormsApplication2\img\pol.jpg");
+            Bitmap bitmap = new Bitmap(@"img\wall.jpg");
+            Bitmap bitmapTop = new Bitmap(@"img\top.jpg");
+            Bitmap bitmapFloor = new Bitmap(@"img\pol.jpg");
             if (Txtr == null) Txtr = new Texture(bitmap);
+            if (TxtrTop == null) TxtrTop = new Texture(bitmapTop);
+            if (TxtrFloor == null) TxtrFloor = new Texture(bitmapFloor);
             Mapper map = new Mapper();
-            Labyrinth lab = new Labyrinth(map.PolygonCreated());
+            Labyrinth lab = new Labyrinth(map.Polygons, map.PolygonsTop, map.PolygonsFloor);
             lab.DrawLabyrinth(Txtr);
+            lab.DrawTop(TxtrTop);
+            lab.DrawFloor(TxtrFloor);
             glControl1.SwapBuffers();
         }
 
