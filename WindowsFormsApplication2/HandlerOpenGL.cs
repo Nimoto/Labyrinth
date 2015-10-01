@@ -27,6 +27,8 @@ namespace WindowsFormsApplication2
         private float[] mouseSpeed = new float[2];
         private float oldX = new float();
         private float oldY = new float();
+        private float oldMouseX = new float();
+        private float oldMouseY = new float();
 
         private HandlerOpenGL() {
             init();
@@ -58,6 +60,8 @@ namespace WindowsFormsApplication2
             this.targetZ = this.countTargetZ();
             this.oldX = Mouse.GetCursorState().X;
             this.oldY = Mouse.GetCursorState().Y;
+            this.oldMouseX = Mouse.GetCursorState().X;
+            this.oldMouseY = Mouse.GetCursorState().Y;
 
             this.loaded = true;
             GL.ClearColor(Color.Black);
@@ -87,7 +91,6 @@ namespace WindowsFormsApplication2
             this.eyeZ += mode * (float)Math.Cos(this.angle);
             this.targetX += (this.eyeX - oldX);
             this.targetZ += (this.eyeZ - oldZ);
-            System.Console.Write("forward => " + this.targetX + " " + this.targetZ + "\n");
             this.ChangeCam();
         }
 
@@ -96,8 +99,25 @@ namespace WindowsFormsApplication2
             this.angle += mode*0.05f;
             this.targetX = this.countTargetX();
             this.targetZ = this.countTargetZ();
-            System.Console.Write("sideways => " + this.targetX + " " + this.targetZ + "\n");
             this.ChangeCam();
+        }
+
+        public void LookAround(int X, int Y) {
+            float deltaX = new float();
+            float deltaY = new float();
+            int modeX = 0, modeY;
+            deltaX = (float)X - this.oldMouseX;
+            deltaY = (float)Y - this.oldMouseY;
+            if (Math.Abs(deltaY) > 10) {
+                modeY = (int)Math.Round(deltaY / Math.Abs(deltaY));
+                this.targetY -= modeY * 0.05f;
+                this.oldMouseY = Y;
+            }
+            if (Math.Abs(deltaX) > 10) {
+                this.oldMouseX = X;
+                modeX = (int)Math.Round(deltaX / Math.Abs(deltaX));
+            }
+            MoveSideways(modeX);
         }
     }
 }

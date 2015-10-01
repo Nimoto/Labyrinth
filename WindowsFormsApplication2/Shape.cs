@@ -75,8 +75,7 @@ namespace WindowsFormsApplication2
                 textCoord[2][0] = 1.0f;
                 GL.BindTexture(TextureTarget.Texture3D, Txtr.GetTexture);
             }
-
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            
             GL.Color3(this.color);
             GL.Begin(BeginMode.Polygon);
             int count = 0;
